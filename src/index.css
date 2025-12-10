@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+/* Swiper pagination custom styles */
+.swiper-pagination-bullet {
+  background: #cbd5e1;
+  opacity: 1;
+  width: 10px;
+  height: 10px;
+}
+
+.swiper-pagination-bullet-active {
+  background: #5eaeff;
+}
+
+/* Hero swiper pagination */
+.hero-swiper .swiper-pagination {
+  bottom: 20px !important;
+}
+
+.hero-swiper .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.5);
+  width: 12px;
+  height: 12px;
+}
+
+.hero-swiper .swiper-pagination-bullet-active {
+  background: #5eaeff;
+}
+
+/* Testimonials swiper */
+.testimonials-swiper {
+  padding-bottom: 3.5rem !important;
+}
+
+.testimonials-swiper .swiper-pagination {
+  bottom: 0 !important;
+}
+
+/* Wiggle animation for phone icon */
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+/* Prose styles for project detail and blog */
+.prose h1,
+.blog-content h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #3b6f9e;
+}
+
+.prose h2,
+.blog-content h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #3b6f9e;
+}
+
+.prose h3,
+.blog-content h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #3b6f9e;
+}
+
+.prose p,
+.blog-content p {
+  margin-bottom: 1rem;
+  color: #cbd5e1;
+  line-height: 1.8;
+}
+
+.prose ul,
+.blog-content ul {
+  list-style: disc;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose ol,
+.blog-content ol {
+  list-style: decimal;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose li,
+.blog-content li {
+  margin-bottom: 0.5rem;
+  color: #cbd5e1;
+}
+
+.prose a,
+.blog-content a {
+  color: #5eaeff;
+  text-decoration: underline;
+}
+
+.prose a:hover,
+.blog-content a:hover {
+  color: #38bdf8;
+}
+
+.prose img,
+.blog-content img {
+  border-radius: 0.75rem;
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.prose blockquote,
+.blog-content blockquote {
+  border-left: 4px solid #5eaeff;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #94a3b8;
+}
+
+.prose code,
+.blog-content code {
+  background: #1e293b;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  color: #5eaeff;
+}
+
+.prose pre,
+.blog-content pre {
+  background: #1e293b;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.prose pre code,
+.blog-content pre code {
+  background: transparent;
+  padding: 0;
+}
+
+/* Line clamp utility */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
