@@ -1,4 +1,3 @@
-import defaultBg from "../../assets/bg.jpg";
 import { CalendarDays, Siren, Wrench, ShieldCheck } from "lucide-react";
 
 const services = [
@@ -34,23 +33,6 @@ const Service = () => {
       id="services"
       className="relative overflow-hidden py-20 text-white"
     >
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 -z-20"
-        style={{
-          backgroundImage: `url(${defaultBg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-        aria-hidden="true"
-      />
-      {/* Overlay */}
-      <div
-        className="absolute inset-0 -z-10 bg-[#205a96]/95"
-        aria-hidden="true"
-      />
-
       <div className="relative z-10 mx-auto max-w-7xl px-4 lg:px-6">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="mt-4 text-4xl font-extrabold leading-tight sm:text-5xl">

@@ -15,35 +15,30 @@ const links = [
     label: "Website",
     href: "https://mmspro.work",
     handle: "mmspro.work",
-    type: "png",
     iconSrc: WebLinkPng,
   },
   {
     label: "Google Map",
-    href: "https://gogle.com/maps",
-    handle: "Charleston, SC",
-    type: "png",
+    href: "https://maps.app.goo.gl/5PKq23yRKyuELf5p9",
+    handle: "1219 Orange Branch Rd, 201, Charleston, SC 29407",
     iconSrc: MapPng,
   },
   {
     label: "Facebook",
     href: "https://facebook.com",
     handle: "@mmspro",
-    type: "png",
     iconSrc: FacebookPng,
   },
   {
     label: "Instagram",
-    href: "https://instagram.com",
-    handle: "@mmspro",
-    type: "png",
+    href: "https://instagram.com/mms_pro_llc",
+    handle: "@mms_pro_llc",
     iconSrc: InstagramPng,
   },
   {
     label: "Telegram",
     href: "https://t.me/mmspro",
     handle: "@mmspro",
-    type: "png",
     iconSrc: TelegramPng,
   },
 ];
@@ -119,7 +114,7 @@ const AboutUs = () => {
                 </div>
 
                 <span className="inline-flex items-center gap-2 text-xs text-white/60 transition group-hover:text-white/85">
-                  Visit <ArrowUpRight className="h-4 w-4" />
+                  <ArrowUpRight className="h-4 w-4" />
                 </span>
               </a>
             ))}

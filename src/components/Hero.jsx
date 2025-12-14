@@ -6,7 +6,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import HandymanImg1 from "../assets/hero-img-1.png";
 import HandymanImg3 from "../assets/hero-img-2.png";
-import defaultBg from "../assets/bg.jpg";
+import defaultBg from "../assets/bg.webp";
 
 const SLIDES = [
   {
@@ -15,8 +15,8 @@ const SLIDES = [
     textTitleBottom: "For Every Fix",
     textDecr:
       "From small repairs to full installations, we get it done cleanly, safely, and on time.",
-    tel: "1-800-123-456",
-    backgroundImg: defaultBg,
+    tel: "954-310-5051",
+
     imgSource: HandymanImg1,
   },
   {
@@ -25,8 +25,8 @@ const SLIDES = [
     textTitleBottom: "Repairs & Installations",
     textDecr:
       "Painting, drywall, fixtures, shelves, TV mounting, and more — quality work you can rely on.",
-    tel: "1-800-123-456",
-    backgroundImg: defaultBg,
+    tel: "954-310-5051",
+
     imgSource: HandymanImg3,
   },
 ];
@@ -53,7 +53,7 @@ export default function Hero({ slides = SLIDES }) {
               <div
                 className="absolute inset-0 -z-20"
                 style={{
-                  backgroundImage: `url(${s.backgroundImg || defaultBg})`,
+                  backgroundImage: `url(${defaultBg})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",

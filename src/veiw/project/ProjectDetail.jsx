@@ -3,6 +3,7 @@ import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import { projects } from "../../constants/projects";
 import { useEffect } from "react";
+import FloatingPhone from "../../components/FloatingPhone";
 
 const ProjectDetail = () => {
   const { id } = useParams();

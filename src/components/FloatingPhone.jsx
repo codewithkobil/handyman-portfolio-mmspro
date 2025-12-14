@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowUp } from "lucide-react";
 import PhonePng from "../assets/icons/telephone.png";
 
-const FloatingPhone = ({ phoneNumber = "1-800-123-456" }) => {
+const FloatingPhone = ({ phoneNumber = "954-310-5051" }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [showNumber, setShowNumber] = useState(false);
   const timerRef = useRef(null);

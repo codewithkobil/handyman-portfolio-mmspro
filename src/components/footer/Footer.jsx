@@ -11,7 +11,7 @@ import Telegram from "../../assets/icons/telegram.png";
 const SOCIAL_LINKS = [
   {
     name: "Instagram",
-    href: "https://instagram.com/pternal_plumbing",
+    href: "https://www.instagram.com/mms_pro_llc",
     icon: Instagram,
   },
   {
@@ -24,22 +24,22 @@ const SOCIAL_LINKS = [
 
 const CONTACT_ITEMS = [
   {
-    label: "Location",
-    value: "Downtown Miami, Florida, Arlington, USA",
-    href: "https://google.com/maps",
-    icon: MapPng,
-  },
-  {
     label: "Phone",
-    value: "+1 123-456-789",
-    href: "tel:+1123456789",
+    value: "954-310-5051",
+    href: "tel:954-310-5051",
     icon: PhonePng,
   },
   {
     label: "Email",
-    value: "demo@example.com",
-    href: "mailto:demo@example.com",
+    value: "lazizmmspro@gmail.com",
+    href: "mailto:lazizmmspro@gmail.com",
     icon: EmailPng,
+  },
+  {
+    label: "Address",
+    value: "1219 Orange Branch Rd, 201, Charleston, SC 29407",
+    href: "https://maps.app.goo.gl/5PKq23yRKyuELf5p9",
+    icon: MapPng,
   },
 ];
 
@@ -69,6 +69,8 @@ const Footer = () => {
 
                     <a
                       href={item.href}
+                      target="_blank"
+                      rel="noreferrer"
                       className="text-zinc-200 transition hover:text-white"
                     >
                       {item.value}

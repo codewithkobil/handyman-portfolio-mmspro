@@ -1,7 +1,33 @@
 import { useState } from "react";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
-import { Phone, Mail, MapPin, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
+
+import MapPng from "../../assets/icons/map.png";
+import EmailPng from "../../assets/icons/communication.png";
+import PhonePng from "../../assets/icons/telephone.png";
+import sendToTelegram from "../../constants/sendToTelegram";
+
+const CONTACT_ITEMS = [
+  {
+    label: "Phone",
+    value: "954-310-5051",
+    href: "tel:954-310-5051",
+    icon: PhonePng,
+  },
+  {
+    label: "Email",
+    value: "lazizmmspro@gmail.com",
+    href: "mailto:lazizmmspro@gmail.com",
+    icon: EmailPng,
+  },
+  {
+    label: "Service Area",
+    value: "Charleston, SC + nearby",
+    href: "https://maps.app.goo.gl/jbMnpJ4uWT3PUnuA8",
+    icon: MapPng,
+  },
+];
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -11,11 +37,17 @@ const Contact = () => {
     description: "",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thanks! We received your request and will contact you shortly.");
-    setFormData({ fullName: "", email: "", phone: "", description: "" });
+
+    try {
+      await sendToTelegram(formData);
+      alert("Thanks! We received your request and will contact you shortly.");
+      setFormData({ fullName: "", email: "", phone: "", description: "" });
+    } catch (err) {
+      console.error("Telegram error:", err);
+      alert("Failed to send. Please try again or call us.");
+    }
   };
 
   const handleChange = (e) => {
@@ -60,51 +92,41 @@ const Contact = () => {
                 Contact Details
               </h2>
               <p className="mt-2 text-sm text-slate-300">
-                Prefer calling or texting? Reach us directly:
+                Prefer calling or messaging? Reach us directly:
               </p>
 
               <div className="mt-6 space-y-4">
-                <div className="flex items-start gap-3">
-                  <span className="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/10 ring-1 ring-white/10">
-                    <Phone className="h-5 w-5 text-cyan-200" />
-                  </span>
-                  <div>
-                    <p className="text-sm text-slate-400">Phone</p>
-                    <a
-                      href="tel:+1800123456"
-                      className="font-semibold text-slate-100 hover:text-cyan-200"
-                    >
-                      (800) 123-456
-                    </a>
-                  </div>
-                </div>
+                {CONTACT_ITEMS.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target={
+                      item.label === "Service Area" ? "_blank" : undefined
+                    }
+                    rel={
+                      item.label === "Service Area"
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    className="group flex items-start gap-3 rounded-xl p-2 transition hover:bg-white/5"
+                  >
+                    <span className="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/10">
+                      <img
+                        src={item.icon}
+                        alt={`${item.label} icon`}
+                        className="h-5 w-5 object-contain opacity-90 transition group-hover:opacity-100"
+                        loading="lazy"
+                      />
+                    </span>
 
-                <div className="flex items-start gap-3">
-                  <span className="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-500/10 ring-1 ring-white/10">
-                    <Mail className="h-5 w-5 text-indigo-200" />
-                  </span>
-                  <div>
-                    <p className="text-sm text-slate-400">Email</p>
-                    <a
-                      href="mailto:hello@mmspro.com"
-                      className="font-semibold text-slate-100 hover:text-indigo-200"
-                    >
-                      hello@mmspro.com
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <span className="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-slate-500/10 ring-1 ring-white/10">
-                    <MapPin className="h-5 w-5 text-slate-200" />
-                  </span>
-                  <div>
-                    <p className="text-sm text-slate-400">Service Area</p>
-                    <p className="font-semibold text-slate-100">
-                      Charleston, SC + nearby
-                    </p>
-                  </div>
-                </div>
+                    <div>
+                      <p className="text-sm text-slate-400">{item.label}</p>
+                      <p className="font-semibold text-slate-100 group-hover:text-cyan-200">
+                        {item.value}
+                      </p>
+                    </div>
+                  </a>
+                ))}
               </div>
 
               <div className="mt-6 rounded-xl bg-white/5 p-4 ring-1 ring-white/10">
@@ -157,7 +179,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="w-full rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3 text-slate-100 placeholder:text-slate-500 outline-none transition focus:border-cyan-300/50 focus:ring-2 focus:ring-cyan-300/15"
-                    placeholder="(843) 555-0123"
+                    placeholder="(954) 310-5051"
                   />
                   <p className="mt-2 text-xs text-slate-400">
                     We may call or text to confirm details and scheduling.
