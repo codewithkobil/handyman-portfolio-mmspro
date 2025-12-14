@@ -1,178 +1,233 @@
-import { useState, useEffect } from "react";
-import { Link } from 'react-router'
+import { useEffect, useState } from "react";
+import { Link, NavLink } from "react-router";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { projects } from "../../constants/projects";
+import logoIcon from "../../assets/logo.png";
 
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
-  // Close mobile menu on resize to desktop
   useEffect(() => {
     const onResize = () => {
-      if (window.innerWidth >= 768) setMobileOpen(false);
+      if (window.innerWidth >= 768) {
+        setMobileOpen(false);
+        setMobileServicesOpen(false);
+      }
     };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  const closeMobile = () => {
+    setMobileOpen(false);
+    setMobileServicesOpen(false);
+  };
+
+  const navLinkBase =
+    "uppercase text-sm font-semibold text-white transition hover:text-sky-200";
+  const navLinkActive = "text-sky-200";
+
   return (
-    <>
-      <header className="absolute top-[15px] left-0 right-0 z-40 px-4 lg:px-8">
-        <div className="max-w-8xl mx-auto bg-[#5382AB]/50 text-white shadow-md rounded-lg">
-          <div className="flex items-center justify-between px-4 py-4 lg:px-6">
-            {/* Logo */}
-            <a href="#" className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center">
-                {/* Simple logo placeholder matching the P style */}
-                <svg
-                  viewBox="0 0 24 24"
-                  className="h-10 w-10 text-white"
-                  fill="currentColor"
-                >
-                  <path d="M4 4h5a4 4 0 0 1 0 8H6v8H4V4z" />
-                  <path d="M13 12h-3" stroke="currentColor" strokeWidth="2" />
-                  {/* Water drop hint */}
-                  <path d="M16 16c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2z" fill="#60a5fa" />
-                </svg>
-              </div>
-              <div className="leading-tight">
-                <p className="text-2xl font-extrabold tracking-wide uppercase">MMS PRO</p>
-                <p className="-mt-1 text-xs text-sky-200 tracking-wider">Plumbing Services</p>
-              </div>
-            </a>
+    <header className="absolute top-4 left-0 right-0 z-40 px-4 lg:px-8 overflow-x-clip">
+      <div className="mx-auto max-w-7xl rounded-xl bg-[#5382AB]/50 text-white shadow-md ring-1 ring-white/10">
+        <div className="flex items-center justify-between px-4 py-4 lg:px-6">
+          {/* Logo (full height, no padding/margin around image) */}
+          <Link
+            to="/"
+            className="flex items-center gap-3 shrink-0"
+            onClick={closeMobile}
+          >
+            {/* Logo box equals header height visually */}
+            <div className="h-12 w-18 overflow-hidden ">
+              <img
+                src={logoIcon}
+                alt="MMS PRO logo"
+                className="h-full w-full object-contain"
+                draggable="false"
+              />
+            </div>
 
-            {/* Desktop Menu */}
-            <nav className="hidden items-center gap-6 text-sm font-semibold text-white md:flex">
-              <a className="hover:text-sky-200 transition uppercase" href="/">HOME</a>
+            <div className="leading-tight">
+              <p className="text-xl sm:text-2xl font-extrabold tracking-wide uppercase">
+                MMS PRO
+              </p>
+              <p className="-mt-1 text-xs text-sky-200 tracking-wider">
+                Handyman Services
+              </p>
+            </div>
+          </Link>
 
-              {/* Dropdown Container */}
-              <div className="relative group">
-                <a className="hover:text-sky-200 transition uppercase flex items-center gap-1 py-4" href="/#services">
-                  SERVICES <svg className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-                </a>
+          {/* Desktop Menu */}
+          <nav className="hidden items-center gap-6 md:flex">
+            <NavLink
+              to="/"
+              end
+              className={({ isActive }) =>
+                `${navLinkBase} ${isActive ? navLinkActive : ""}`
+              }
+            >
+              Home
+            </NavLink>
 
-                {/* Dropdown Menu */}
-                <div className="absolute top-full left-1/2 -translate-x-1/2 w-[800px] bg-white text-slate-900 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50 overflow-hidden border border-slate-100">
-                  <div className="p-6 grid grid-cols-3 gap-4">
-                    {projects.map(project => (
+            <NavLink
+              to="/me"
+              className={({ isActive }) =>
+                `${navLinkBase} ${isActive ? navLinkActive : ""}`
+              }
+            >
+              About Us
+            </NavLink>
+
+            {/* Services dropdown */}
+            <div className="relative group">
+              <a
+                href="/services"
+                className={`${navLinkBase} flex items-center gap-1 py-4`}
+              >
+                Services
+                <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
+              </a>
+
+              {/* Dropdown panel */}
+              <div
+                className="
+                  absolute top-full left-1/2 -translate-x-1/2
+                  w-[min(92vw,820px)]
+                  rounded-xl bg-white text-slate-900 shadow-2xl
+                  opacity-0 invisible translate-y-2
+                  group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
+                  transition-all duration-200
+                  z-50 overflow-hidden border border-slate-100
+                "
+              >
+                <div className="px-6 py-5">
+                  <p className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                    Services
+                  </p>
+
+                  <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                    {projects.map((project) => (
                       <Link
                         key={project.id}
                         to={`/service/${project.id}`}
-                        className="block p-3 rounded-lg hover:bg-slate-50 transition group/item"
+                        className="rounded-lg px-3 py-2 hover:bg-slate-50 transition"
                       >
-                        <div className="font-semibold text-sm text-slate-700 group-hover/item:text-[#5eaeff] mb-1">
+                        <div className="text-sm font-semibold text-slate-700 hover:text-[#5eaeff]">
                           {project.title}
                         </div>
                       </Link>
                     ))}
                   </div>
                 </div>
-              </div>
 
-              <Link className="hover:text-sky-200 transition uppercase" to="/contact">CONTACT</Link>
-            </nav>
-
-            {/* Right controls */}
-            <div className="flex items-center gap-4">
-              <Link
-                to="/contact"
-                className="hidden md:inline-block rounded bg-[#5eaeff] px-6 py-3 text-sm font-bold text-white shadow-md transition hover:bg-sky-400"
-              >
-                GET A QUOTE
-              </Link>
-
-              {/* Mobile Menu Button */}
-              <button
-                onClick={() => setMobileOpen((v) => !v)}
-                className="rounded p-2 hover:bg-white/10 md:hidden"
-                aria-label="Toggle menu"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  className="h-6 w-6"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  {mobileOpen ? (
-                    <path d="M6 18L18 6M6 6l12 12" />
-                  ) : (
-                    <>
-                      <path d="M4 6h16" />
-                      <path d="M4 12h16" />
-                      <path d="M4 18h16" />
-                    </>
-                  )}
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile Dropdown */}
-          <div
-            className={`md:hidden overflow-hidden transition-[max-height] duration-300 ${mobileOpen ? "max-h-[1000px]" : "max-h-0"
-              }`}
-          >
-            <div className="space-y-4 border-t border-white/10 bg-[#2c547a] px-6 py-4 text-white">
-              <a
-                className="block font-semibold"
-                href="/"
-                onClick={() => setMobileOpen(false)}
-              >
-                HOME
-              </a>
-
-              {/* Mobile Services Dropdown */}
-              <div>
-                <button
-                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                  className="flex items-center justify-between w-full font-semibold"
-                >
-                  SERVICES
-                  <svg
-                    className={`w-4 h-4 transition-transform ${mobileServicesOpen ? 'rotate-180' : ''}`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                <div className="flex items-center justify-between bg-slate-50 px-6 py-4">
+                  <p className="text-sm text-slate-600">
+                    Need help now? Call us for fast service.
+                  </p>
+                  <Link
+                    to="/contact"
+                    className="rounded-lg bg-[#5eaeff] px-4 py-2 text-xs font-extrabold uppercase text-white shadow-sm transition hover:bg-slate-400"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                  </svg>
-                </button>
-                <div className={`overflow-hidden transition-all duration-300 ${mobileServicesOpen ? 'max-h-[60vh] mt-2' : 'max-h-0'}`}>
-                  <div className="pl-4 space-y-2 border-l-2 border-white/10 ml-1">
-                    {projects.map(project => (
-                      <Link
-                        key={project.id}
-                        to={`/service/${project.id}`}
-                        className="block text-sm text-sky-100 hover:text-white py-1"
-                        onClick={() => setMobileOpen(false)}
-                      >
-                        {project.title}
-                      </Link>
-                    ))}
-                  </div>
+                    Get a quote
+                  </Link>
                 </div>
               </div>
-
-              <a
-                className="block font-semibold"
-                href="/contact"
-                onClick={() => setMobileOpen(false)}
-              >
-                CONTACT
-              </a>
-              <a
-                href="/contact"
-                className="inline-block w-full text-center rounded bg-[#5eaeff] px-5 py-3 text-sm font-bold text-white shadow-md transition hover:bg-sky-400"
-                onClick={() => setMobileOpen(false)}
-              >
-                GET A QUOTE
-              </a>
             </div>
+          </nav>
+
+          {/* Right controls */}
+          <div className="flex items-center gap-3">
+            <Link
+              to="/contact"
+              className="hidden md:inline-flex items-center justify-center rounded-lg bg-[#5eaeff] px-5 py-3 text-sm font-extrabold text-white shadow-md transition hover:bg-slate-400"
+            >
+              Get a Quote
+            </Link>
+
+            {/* Mobile menu button (Lucide) */}
+            <button
+              onClick={() => setMobileOpen((v) => !v)}
+              className="rounded-lg p-2 hover:bg-white/10 md:hidden"
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
           </div>
         </div>
-      </header>
-    </>
+
+        {/* Mobile menu */}
+        <div
+          className={`md:hidden overflow-hidden transition-[max-height] duration-300 ${
+            mobileOpen ? "max-h-[80vh]" : "max-h-0"
+          }`}
+        >
+          <div className="space-y-4 border-t border-white/10 bg-[#2c547a] px-6 py-4 text-white">
+            <Link
+              className="block font-semibold uppercase"
+              to="/"
+              onClick={closeMobile}
+            >
+              Home
+            </Link>
+
+            <Link
+              className="block font-semibold uppercase"
+              to="/me"
+              onClick={closeMobile}
+            >
+              About Us
+            </Link>
+
+            {/* Mobile Services Dropdown */}
+            <div>
+              <button
+                onClick={() => setMobileServicesOpen((v) => !v)}
+                className="flex w-full items-center justify-between font-semibold uppercase"
+              >
+                Services
+                <ChevronDown
+                  className={`h-5 w-5 transition-transform ${
+                    mobileServicesOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
+              <div
+                className={`overflow-hidden transition-[max-height] duration-300 ${
+                  mobileServicesOpen ? "max-h-[50vh] mt-3" : "max-h-0"
+                }`}
+              >
+                <div className="ml-1 space-y-2 border-l-2 border-white/10 pl-4">
+                  {projects.map((project) => (
+                    <Link
+                      key={project.id}
+                      to={`/service/${project.id}`}
+                      className="block py-1 text-sm text-sky-100 hover:text-white"
+                      onClick={closeMobile}
+                    >
+                      {project.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <Link
+              to="/contact"
+              className="inline-flex w-full items-center justify-center rounded-lg bg-[#5eaeff] px-5 py-3 text-sm font-extrabold uppercase text-white shadow-md transition hover:bg-slate-400"
+              onClick={closeMobile}
+            >
+              Get a Quote
+            </Link>
+          </div>
+        </div>
+      </div>
+    </header>
   );
 }
 

@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { ArrowUp } from "lucide-react";
+import PhonePng from "../assets/icons/telephone.png";
 
 const FloatingPhone = ({ phoneNumber = "1-800-123-456" }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -6,59 +8,53 @@ const FloatingPhone = ({ phoneNumber = "1-800-123-456" }) => {
   const timerRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsVisible(window.scrollY > 400);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setIsVisible(window.scrollY > 400);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    return () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
-    };
-  }, []);
+  useEffect(() => () => timerRef.current && clearTimeout(timerRef.current), []);
 
-  const handleClick = (event) => {
+  const handleCallClick = (e) => {
     const isDesktop = window.innerWidth >= 1024;
-    if (isDesktop) return; // let tel: link work normally on desktop
+    if (isDesktop) return;
 
     if (!showNumber) {
-      event.preventDefault();
+      e.preventDefault();
       setShowNumber(true);
-      if (timerRef.current) clearTimeout(timerRef.current);
+      timerRef.current && clearTimeout(timerRef.current);
       timerRef.current = setTimeout(() => setShowNumber(false), 3500);
     }
-    // if already showing, allow the tel: link to proceed
   };
 
+  const handleScrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
   return (
-    <div
-      className={`fixed top-6 left-6 z-50 transition-all duration-500 ${
-        isVisible
-          ? "translate-y-0 opacity-100"
-          : "translate-y-20 opacity-0 pointer-events-none"
-      }`}
-    >
-      <div className="relative">
+    <>
+      {/* Phone (top-left) */}
+      <div
+        className={`fixed top-6 left-6 z-50 transition-all duration-500 ${
+          isVisible
+            ? "translate-y-0 opacity-100"
+            : "translate-y-20 opacity-0 pointer-events-none"
+        }`}
+      >
         <a
           href={`tel:${phoneNumber}`}
-          onClick={handleClick}
-          className="group flex items-center gap-3 rounded-full bg-[#00A0F8] px-4 py-3 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 animate-pulse hover:animate-none"
+          onClick={handleCallClick}
+          className="group flex items-center gap-3 rounded-full bg-[#00A0F8] px-4 py-3 shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 animate-pulse hover:animate-none"
           aria-label={`Call us at ${phoneNumber}`}
         >
-          <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/20 group-hover:bg-white/30 transition-colors">
-            <svg
-              viewBox="0 0 24 24"
-              className="h-6 w-6 text-white animate-[wiggle_1s_ease-in-out_infinite]"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-            >
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3.1 5.18 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.72c.12.86.32 1.7.6 2.5a2 2 0 0 1-.45 2.11L9 10a16 16 0 0 0 5 5l.67-1.15a2 2 0 0 1 2.11-.45c.8.28 1.64.48 2.5.6A2 2 0 0 1 20 16.92Z" />
-            </svg>
+          <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/20 transition-colors group-hover:bg-white/30">
+            <img
+              src={PhonePng}
+              alt="Phone"
+              className="h-6 w-6 object-contain opacity-95 transition group-hover:opacity-100"
+              loading="lazy"
+            />
           </span>
+
           <div className={`${showNumber ? "block" : "hidden"} pr-2 lg:block`}>
             <p className="text-xs font-medium text-white/90 uppercase tracking-wide">
               Call Now
@@ -67,7 +63,22 @@ const FloatingPhone = ({ phoneNumber = "1-800-123-456" }) => {
           </div>
         </a>
       </div>
-    </div>
+
+      {/* Scroll To Top (bottom-right) */}
+      <button
+        type="button"
+        onClick={handleScrollTop}
+        className={`fixed bottom-6 right-6 z-50 inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-zinc-950/40 shadow-lg backdrop-blur transition-all duration-500 hover:bg-zinc-950/55 hover:shadow-2xl ${
+          isVisible
+            ? "translate-y-0 opacity-100"
+            : "translate-y-20 opacity-0 pointer-events-none"
+        }`}
+        aria-label="Scroll to top"
+        title="Scroll to top"
+      >
+        <ArrowUp className="h-5 w-5 text-white/90" />
+      </button>
+    </>
   );
 };
 

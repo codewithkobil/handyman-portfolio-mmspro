@@ -1,5 +1,27 @@
 @import "tailwindcss";
 
+/* Fix iPad/Safari horizontal overflow + white strip */
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Prevent media from causing horizontal scroll */
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
 /* Swiper pagination custom styles */
 .swiper-pagination-bullet {
   background: #cbd5e1;
@@ -156,7 +178,7 @@
 /* Line clamp utility */
 .line-clamp-3 {
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

@@ -1,31 +1,128 @@
-import { Link } from "react-router";
+import { href, Link } from "react-router";
+
+import MapPng from "../../assets/icons/map.png";
+import EmailPng from "../../assets/icons/communication.png";
+import PhonePng from "../../assets/icons/telephone.png";
+
+import Instagram from "../../assets/icons/instagram.png";
+import Facebook from "../../assets/icons/facebook.png";
+import Telegram from "../../assets/icons/telegram.png";
+
+const SOCIAL_LINKS = [
+  {
+    name: "Instagram",
+    href: "https://instagram.com/pternal_plumbing",
+    icon: Instagram,
+  },
+  {
+    name: "Facebook",
+    href: "https://facebook.com/pternal.plumbing",
+    icon: Facebook,
+  },
+  { name: "Telegram", href: "https://t.me/pternal_plumbing", icon: Telegram },
+];
+
+const CONTACT_ITEMS = [
+  {
+    label: "Location",
+    value: "Downtown Miami, Florida, Arlington, USA",
+    href: "https://google.com/maps",
+    icon: MapPng,
+  },
+  {
+    label: "Phone",
+    value: "+1 123-456-789",
+    href: "tel:+1123456789",
+    icon: PhonePng,
+  },
+  {
+    label: "Email",
+    value: "demo@example.com",
+    href: "mailto:demo@example.com",
+    icon: EmailPng,
+  },
+];
 
 const Footer = () => {
   return (
-    <footer className="bg-slate-900 text-white">
-      <div className="mx-auto max-w-7xl px-4 py-16 lg:px-6">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2">
+    <footer className="bg-zinc-950 text-zinc-100">
+      <div className="mx-auto max-w-7xl px-4 py-10 lg:px-6">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
+          {/* Contact */}
           <div>
             <h3 className="mb-4 text-lg font-semibold">Contact Us</h3>
-            <p className="text-slate-300">Downtown Miami, Florida, Arlington, USA</p>
-            <p className="mt-2 text-slate-300">+1 123-456-789</p>
-            <p className="mt-2 text-slate-300">demo@example.com</p>
+
+            <ul className="space-y-4">
+              {CONTACT_ITEMS.map((item) => (
+                <li key={item.label} className="flex items-start gap-3">
+                  <span className="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5">
+                    <img
+                      src={item.icon}
+                      alt={`${item.label} icon`}
+                      className="h-5 w-5 object-contain opacity-90"
+                      loading="lazy"
+                    />
+                  </span>
+
+                  <div className="leading-tight">
+                    <p className="text-sm text-zinc-400">{item.label}</p>
+
+                    <a
+                      href={item.href}
+                      className="text-zinc-200 transition hover:text-white"
+                    >
+                      {item.value}
+                    </a>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
 
+          {/* Social */}
+          <div>
+            <h3 className="mb-4 text-lg font-semibold">Social</h3>
+            <p className="text-zinc-300">
+              Follow us for updates & recent work.
+            </p>
+
+            <div className="mt-6 flex items-center gap-3">
+              {SOCIAL_LINKS.map((s) => (
+                <a
+                  key={s.name}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.name}
+                  className="group inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 transition hover:bg-white/10"
+                >
+                  <img
+                    src={s.icon}
+                    alt={`${s.name} icon`}
+                    className="h-6 w-6 object-contain opacity-90 transition group-hover:opacity-100"
+                    loading="lazy"
+                  />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Quick Links */}
           <div>
             <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
-            <ul className="space-y-2 text-slate-300">
+            <ul className="space-y-2 text-zinc-300">
               <li>
-                <a href="/#about" className="hover:text-white transition">About</a>
+                <a href="/me" className="transition hover:text-white">
+                  About Us
+                </a>
               </li>
               <li>
-                <a href="/#services" className="hover:text-white transition">Services</a>
+                <a href="/services" className="transition hover:text-white">
+                  Services
+                </a>
               </li>
               <li>
-                <a href="/#beforeAfter" className="hover:text-white transition">Our Work Transformation</a>
-              </li>
-              <li>
-                <Link to="/contact" className="hover:text-white transition">
+                <Link to="/contact" className="transition hover:text-white">
                   Get a Quote
                 </Link>
               </li>
@@ -33,8 +130,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-6 text-center text-sm text-slate-400">
-          © {new Date().getFullYear()} PTERNAL Plumbing Services. All Rights Reserved. Developed by Kobil
+        <div className="mt-10 border-t border-white/10 pt-6 text-center text-sm text-zinc-400">
+          © {new Date().getFullYear()} MMS PRO
         </div>
       </div>
     </footer>

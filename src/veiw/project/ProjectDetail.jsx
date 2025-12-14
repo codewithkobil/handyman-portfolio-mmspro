@@ -18,7 +18,7 @@ const ProjectDetail = () => {
 
   const handleBackClick = (e) => {
     e.preventDefault();
-    navigate("/");
+    navigate("/services");
     setTimeout(() => {
       const projectsSection = document.getElementById("projects");
       if (projectsSection) {
@@ -29,9 +29,9 @@ const ProjectDetail = () => {
 
   if (!project) {
     return (
-      <div className="min-h-screen w-full bg-slate-900 text-white flex flex-col">
+      <div className="w-full bg-slate-800 text-white flex flex-col">
         <Header />
-        <div className="flex-grow flex flex-col items-center justify-center p-4">
+        <div className="grow flex flex-col items-center justify-center p-4">
           <h1 className="text-3xl font-bold mb-4">Project not found</h1>
           <button
             onClick={handleBackClick}
@@ -41,15 +41,16 @@ const ProjectDetail = () => {
           </button>
         </div>
         <Footer />
+        <FloatingPhone />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen w-full bg-slate-900 text-white flex flex-col">
+    <div className="w-full bg-slate-800 text-white flex flex-col">
       <Header />
 
-      <main className="flex-grow">
+      <main className="grow">
         <article className="mx-auto max-w-7xl px-4 pt-40 pb-20 lg:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Left Column: Image */}
@@ -80,7 +81,7 @@ const ProjectDetail = () => {
               <div className="pt-6">
                 <button
                   onClick={handleBackClick}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#5eaeff] text-white rounded-lg hover:bg-[#4a90e2] transition-colors font-semibold shadow-lg shadow-blue-500/20"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#5eaeff] text-white rounded-lg hover:bg-[#4a90e2] transition-colors font-semibold shadow-lg shadow-slate-500/20"
                 >
                   <svg
                     viewBox="0 0 24 24"
@@ -91,7 +92,7 @@ const ProjectDetail = () => {
                   >
                     <path d="M19 12H5M12 19l-7-7 7-7" />
                   </svg>
-                  Back to Projects
+                  Back to Services
                 </button>
               </div>
             </div>

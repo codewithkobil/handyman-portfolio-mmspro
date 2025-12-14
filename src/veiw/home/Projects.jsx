@@ -1,12 +1,13 @@
 import { Link } from "react-router";
+import { ArrowRight } from "lucide-react";
 import { projects } from "../../constants/projects";
 
 const Projects = () => {
   return (
-    <section id="services" className="bg-white py-16 text-slate-900">
+    <section id="services" className="bg-slate-50 py-16 text-slate-900">
       <div className="mx-auto max-w-7xl px-4 lg:px-6">
-        <h2 className="text-center text-4xl font-extrabold sm:text-5xl text-slate-900 mb-12">
-          Plumbing <span className="text-[#5eaeff]">Project Work</span>
+        <h2 className="mb-12 text-center text-4xl font-extrabold sm:text-5xl">
+          Our Services
         </h2>
 
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -15,22 +16,42 @@ const Projects = () => {
               key={project.id}
               id={`project-${project.id}`}
               to={`/service/${project.id}`}
-              className="group block scroll-mt-28"
+              className="group block h-full scroll-mt-28"
             >
-              <div className="overflow-hidden rounded-xl bg-slate-100">
-                <img
-                  className="h-64 w-full object-cover transition duration-500 group-hover:scale-110"
-                  alt={project.title}
-                  src={project.coverImage}
-                />
-              </div>
-              <div className="mt-5">
-                <h3 className="text-xl font-bold text-slate-900 group-hover:text-[#5eaeff] transition">
-                  {project.title}
-                </h3>
-                <p className="mt-2 text-sm text-slate-500 line-clamp-2">
-                  {project.excerpt}
-                </p>
+              {/* Card */}
+              <div className="flex h-full flex-col overflow-hidden rounded-2xl bg-gray-300 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-lg">
+                {/* SAME HEIGHT IMAGE (aspect ratio wrapper) */}
+                <div className="relative aspect-16/10 w-full overflow-hidden bg-slate-100">
+                  <img
+                    src={project.coverImage}
+                    alt={project.title}
+                    className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-110"
+                    loading="lazy"
+                    draggable="false"
+                  />
+                </div>
+
+                {/* Divider between image and content */}
+                <div className="h-px w-full bg-slate-200" />
+
+                {/* Content */}
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="text-xl font-bold text-slate-900 transition group-hover:text-[#5eaeff] line-clamp-2 min-h-13">
+                    {project.title}
+                  </h3>
+
+                  <p className="mt-2 text-sm text-slate-500 line-clamp-2 min-h-10">
+                    {project.excerpt}
+                  </p>
+
+                  {/* Read more pinned bottom */}
+                  <div className="mt-auto pt-5">
+                    <span className="inline-flex items-center gap-2 text-sm font-semibold text-slate-900 transition group-hover:text-[#5eaeff]">
+                      Read more
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </div>
+                </div>
               </div>
             </Link>
           ))}

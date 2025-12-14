@@ -1,59 +1,75 @@
+import Instagram from "../../assets/icons/instagram.png";
+import Facebook from "../../assets/icons/facebook.png";
+import Telegram from "../../assets/icons/telegram.png";
+
 const SOCIAL_POSTS = [
   {
     platform: "Instagram",
-    icon: "📷",
-    color: "from-purple-500 to-pink-500",
+    icon: Instagram,
+    color: "from-purple-600 to-pink-500",
     link: "https://instagram.com/pternal_plumbing",
+    handle: "@pternal_plumbing",
   },
   {
     platform: "Facebook",
-    icon: "👍",
-    color: "from-blue-600 to-blue-400",
+    icon: Facebook,
+    color: "from-blue-700 to-blue-500",
     link: "https://facebook.com/pternal.plumbing",
+    handle: "pternal.plumbing",
   },
   {
     platform: "Telegram",
-    icon: "✈️",
-    color: "from-sky-500 to-blue-500",
+    icon: Telegram,
+    color: "from-sky-600 to-cyan-500",
     link: "https://t.me/pternal_plumbing",
+    handle: "@pternal_plumbing",
   },
 ];
 
 const SocialMedia = () => {
   return (
-    <section id="social" className="bg-slate-50 py-20 text-slate-900">
+    <section id="social" className="bg-zinc-50 py-20 text-zinc-900">
       <div className="mx-auto max-w-7xl px-4 text-center">
-        <h2 className="text-4xl font-extrabold text-slate-900">
-          Our <span className="text-[#5eaeff]">Social Media</span>
+        <h2 className="text-4xl font-extrabold tracking-tight">
+          Our <span className="text-sky-600">Social Media</span>
         </h2>
-        <p className="mt-4 text-slate-600">
-          Follow us on social media for updates, tips, and our latest projects
+        <p className="mt-4 mx-auto max-w-2xl text-zinc-600">
+          Follow us for updates, tips, and our latest services.
         </p>
 
         <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
-          {SOCIAL_POSTS.map((social, idx) => (
+          {SOCIAL_POSTS.map((social) => (
             <a
-              key={idx}
+              key={social.platform}
               href={social.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block overflow-hidden rounded-2xl bg-white shadow-lg transition hover:shadow-2xl hover:-translate-y-1"
+              className="group block overflow-hidden rounded-2xl border border-slate-800 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+              aria-label={`Open ${social.platform}`}
             >
               {/* Header */}
-              <div className={`bg-gradient-to-r ${social.color} p-8 text-white`}>
+              <div className={`bg-linear-to-r ${social.color} p-8 text-white`}>
                 <div className="flex flex-col items-center gap-4">
-                  <span className="text-5xl">{social.icon}</span>
+                  <div className="grid h-16 w-16 place-items-center rounded-2xl bg-white/15 ring-1 ring-white/25">
+                    <img
+                      src={social.icon}
+                      alt={`${social.platform} icon`}
+                      className="h-10 w-10 object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+
                   <div className="text-center">
                     <h3 className="text-2xl font-bold">{social.platform}</h3>
-                    <p className="text-sm opacity-90">@pternal_plumbing</p>
+                    <p className="text-sm opacity-90">{social.handle}</p>
                   </div>
                 </div>
               </div>
 
               {/* Footer */}
               <div className="p-6">
-                <p className="text-base font-bold text-[#5eaeff] group-hover:text-[#205a96] transition">
-                  View on {social.platform} →
+                <p className="text-base font-semibold text-sky-700 transition group-hover:text-indigo-700">
+                  View on {social.platform} <span aria-hidden>→</span>
                 </p>
               </div>
             </a>

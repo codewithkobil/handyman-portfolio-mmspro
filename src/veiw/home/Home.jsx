@@ -12,17 +12,18 @@ import InfoService from "./InfoService";
 
 const Home = () => {
   return (
-    <div className="min-h-screen w-full bg-slate-900 text-white">
+    <div className="w-full bg-slate-800 text-white">
       <Header />
       <Hero />
       <InfoService />
+      <BeforeAfter />
       <Projects />
       <Service />
       <Testimonials />
-      <BeforeAfter />
+
       <SocialMedia />
       <Footer />
-      <FloatingPhone phoneNumber="1-800-123-456" />
+      <FloatingPhone />
     </div>
   );
 };
