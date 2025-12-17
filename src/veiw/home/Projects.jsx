@@ -15,7 +15,7 @@ const Projects = () => {
             <Link
               key={project.id}
               id={`project-${project.id}`}
-              to={`/service/${project.id}`}
+              to={`/service/${project.slug}`}
               className="group block h-full scroll-mt-28"
             >
               {/* Card */}

@@ -7,6 +7,7 @@ import PhonePng from "../../assets/icons/telephone.png";
 import Instagram from "../../assets/icons/instagram.png";
 import Facebook from "../../assets/icons/facebook.png";
 import Telegram from "../../assets/icons/telegram.png";
+import MapEmbed from "./MapEmbed";
 
 const SOCIAL_LINKS = [
   {
@@ -47,7 +48,7 @@ const Footer = () => {
   return (
     <footer className="bg-zinc-950 text-zinc-100">
       <div className="mx-auto max-w-7xl px-4 py-10 lg:px-6">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
           {/* Contact */}
           <div>
             <h3 className="mb-4 text-lg font-semibold">Contact Us</h3>
@@ -130,6 +131,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
+          <MapEmbed />
         </div>
 
         <div className="mt-10 border-t border-white/10 pt-6 text-center text-sm text-zinc-400">

@@ -1,10 +1,68 @@
 {
   "hosting": {
     "public": "dist",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "redirects": [
+      {
+        "source": "/service/1",
+        "destination": "/service/home-interior-painting",
+        "type": 301
+      },
+      {
+        "source": "/service/2",
+        "destination": "/service/drywall-repair-and-texture",
+        "type": 301
+      },
+      {
+        "source": "/service/3",
+        "destination": "/service/cabinet-installation",
+        "type": 301
+      },
+      {
+        "source": "/service/4",
+        "destination": "/service/sink-and-faucet-installation-and-replacement",
+        "type": 301
+      },
+      {
+        "source": "/service/5",
+        "destination": "/service/toilet-installation-and-replacement",
+        "type": 301
+      },
+      {
+        "source": "/service/6",
+        "destination": "/service/garbage-disposal-installation",
+        "type": 301
+      },
+      {
+        "source": "/service/7",
+        "destination": "/service/furniture-assembly",
+        "type": 301
+      },
+      {
+        "source": "/service/8",
+        "destination": "/service/picture-hanging",
+        "type": 301
+      },
+      {
+        "source": "/service/9",
+        "destination": "/service/tv-mounting",
+        "type": 301
+      },
+      {
+        "source": "/service/10",
+        "destination": "/service/lock-installation-and-repair",
+        "type": 301
+      },
+      {
+        "source": "/service/11",
+        "destination": "/service/shelving-installation",
+        "type": 301
+      },
+      {
+        "source": "/service/12",
+        "destination": "/service/light-fixture-installation",
+        "type": 301
+      }
     ],
     "rewrites": [
       {

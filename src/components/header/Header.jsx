@@ -110,7 +110,7 @@ function Header() {
                     {projects.map((project) => (
                       <Link
                         key={project.id}
-                        to={`/service/${project.id}`}
+                        to={`/service/${project.slug}`}
                         className="rounded-lg px-3 py-2 hover:bg-slate-50 transition"
                       >
                         <div className="text-sm font-semibold text-slate-700 hover:text-[#5eaeff]">

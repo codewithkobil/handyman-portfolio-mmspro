@@ -7,6 +7,7 @@ import MapPng from "../../assets/icons/map.png";
 import EmailPng from "../../assets/icons/communication.png";
 import PhonePng from "../../assets/icons/telephone.png";
 import sendToTelegram from "../../constants/sendToTelegram";
+import MapNearby from "../../components/footer/MapNearby";
 
 const CONTACT_ITEMS = [
   {
@@ -128,7 +129,7 @@ const Contact = () => {
                   </a>
                 ))}
               </div>
-
+              <MapNearby />
               <div className="mt-6 rounded-xl bg-white/5 p-4 ring-1 ring-white/10">
                 <p className="text-sm text-slate-300">
                   Tip: Include photos and your preferred time window for a
@@ -219,7 +220,7 @@ const Contact = () => {
                   value={formData.description}
                   onChange={handleChange}
                   required
-                  rows={6}
+                  rows={7}
                   className="w-full rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3 text-slate-100 placeholder:text-slate-500 outline-none transition focus:border-cyan-300/50 focus:ring-2 focus:ring-cyan-300/15"
                   placeholder="Example: TV mounting + drywall patch. Address (optional), and preferred day/time..."
                 />

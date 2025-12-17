@@ -6,16 +6,16 @@ import { useEffect } from "react";
 import FloatingPhone from "../../components/FloatingPhone";
 
 const ProjectDetail = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const navigate = useNavigate();
 
-  // Find project by ID (convert id param to number)
-  const project = projects.find((p) => p.id === parseInt(id));
+  // Find project by slug
+  const project = projects.find((p) => p.slug === slug);
 
   // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [id]);
+  }, [slug]);
 
   const handleBackClick = (e) => {
     e.preventDefault();
