@@ -46,7 +46,7 @@ const FloatingPhone = ({ phoneNumber = "954-310-5051" }) => {
           href={`sms:${phoneNumber}?body=${encodeURIComponent(message)}`}
           onClick={handleCallClick}
           className="group flex items-center gap-3 rounded-full bg-[#00A0F8] px-4 py-3 shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 animate-pulse hover:animate-none"
-          aria-label={`Send us an Message at ${phoneNumber}`}
+          aria-label={`Send us a Message at ${phoneNumber}`}
         >
           <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 transition-colors group-hover:bg-white/30">
             <img

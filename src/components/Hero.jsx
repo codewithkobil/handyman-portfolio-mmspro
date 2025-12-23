@@ -92,7 +92,7 @@ export default function Hero({ slides = SLIDES }) {
                         message
                       )}`}
                       className="mt-6 flex items-center gap-3 rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm sm:w-fit md:mt-10"
-                      aria-label={`Send us an Message at ${phoneNumber}`}
+                      aria-label={`Send us a Message at ${phoneNumber}`}
                     >
                       <span className="flex h-13 w-13 items-center justify-center rounded-full bg-white/20 transition-colors group-hover:bg-white/30">
                         <img
@@ -102,8 +102,13 @@ export default function Hero({ slides = SLIDES }) {
                           loading="lazy"
                         />
                       </span>
-                      <span className="text-lg font-extrabold tracking-wide text-white sm:text-xl md:text-2xl">
-                        {s.tel}
+                      <span className="flex flex-col leading-tight text-white">
+                        <span className="text-sm font-semibold uppercase tracking-wider opacity-80 sm:text-base">
+                          Message Now
+                        </span>
+                        <span className="text-lg font-extrabold tracking-wide sm:text-xl md:text-2xl">
+                          {s.tel}
+                        </span>
                       </span>
                     </a>
                   )}
