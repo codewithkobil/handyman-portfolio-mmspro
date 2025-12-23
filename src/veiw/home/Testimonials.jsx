@@ -2,34 +2,35 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import Avatar from "../../components/Avatar";
 
 const TESTIMONIALS = [
   {
-    fullName: "Sanjida Carlose",
-    img: "https://randomuser.me/api/portraits/women/44.jpg",
+    fullName: "Daniel K.",
+    img: "https://production-next-images-cdn.thumbtack.com/i/361663644086853636/width/120/aspect/1-1.webp",
     rating: 5,
-    platform: "Facebook",
-    text: "Quick, friendly, and very professional. They fixed my sink leak the same day and left everything clean.",
+    platform: "Thumbtack",
+    text: "Excellent experience. They installed a shower pan in my 3rd floor bathroom. Took over a demo job and made it look beautiful. They also found little things throughout the house that needed fixing, provided a fair value and did the work that day. Highly recommend.",
   },
   {
-    fullName: "John Doe",
-    img: "https://randomuser.me/api/portraits/men/46.jpg",
+    fullName: "Tamara L.",
+    img: "https://production-next-images-cdn.thumbtack.com/i/431288513193426972/width/120/aspect/1-1.webp",
     rating: 5,
     platform: "Google",
-    text: "Excellent service and fair price. The install was done perfectly and they explained everything clearly.",
+    text: "Laziz arrived on time and despite the language barrier Google translate helped us communicate effectively. I needed two tv's mounted and a ceiling dryer hose vent connected. He was able to do all three in an hour and half. I'll definitely call him again",
   },
   {
-    fullName: "Sarah Johnson",
-    img: "https://randomuser.me/api/portraits/women/68.jpg",
+    fullName: "Sharena M.",
+    img: "https://production-next-images-cdn.thumbtack.com/i/542131543153934360/width/120/aspect/1-1.webp",
     rating: 5,
-    platform: "Instagram",
-    text: "Super fast response and great workmanship. They mounted our TV and hid the cables — looks amazing!",
+    platform: "Thumbtack",
+    text: "I cant even begin to express how happy I am with Laziz’s work! The results speak for themselves, it’s so hard to find honest individuals that can help people without trying to gouge them. There was a notable language barrier, in which we used google translate to discuss in depth areas of conversation, but that did not stop anything! He was always on time, did great work, and was very transparent and honest about everything during the process and I would recommend him to anyone regardless of the project! I’d give him 10 stars if I could! ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️",
   },
   {
     fullName: "Mike Wilson",
     img: "https://randomuser.me/api/portraits/men/32.jpg",
     rating: 5,
-    platform: "Facebook",
+    platform: "Instagram",
     text: "Reliable and efficient. They handled several small repairs in one visit and everything turned out perfect.",
   },
 ];
@@ -55,15 +56,18 @@ const StarRating = ({ rating = 5 }) => (
 const PlatformBadge = ({ platform }) => {
   const Icon = () => {
     // Simple inline icons per platform
-    if (platform === "Facebook") {
+    if (platform === "Thumbtack") {
       return (
         <svg
           viewBox="0 0 24 24"
           className="h-4 w-4"
-          fill="currentColor"
+          fill="none"
           aria-hidden="true"
         >
-          <path d="M22 12a10 10 0 1 0-11.5 9.9v-7H8v-3h2.5V9.5A3.5 3.5 0 0 1 14.2 6h2.3v3h-2c-.7 0-1 .3-1 1v2h3l-.5 3h-2.5v7A10 10 0 0 0 22 12z" />
+          {/* Rounded square */}
+          <rect x="3" y="3" width="18" height="18" rx="5" fill="currentColor" />
+          {/* "T" cutout */}
+          <path d="M8 8h8v2h-3v7h-2v-7H8V8z" fill="white" />
         </svg>
       );
     }
@@ -139,12 +143,7 @@ const Testimonials = () => {
 
                   {/* Footer: img + name */}
                   <div className="mt-6 flex items-center gap-3 border-t border-slate-200 pt-4">
-                    <img
-                      src={t.img}
-                      alt={t.fullName}
-                      className="h-12 w-12 rounded-full object-cover ring-2 ring-white"
-                      loading="lazy"
-                    />
+                    <Avatar src={t.img} alt={t.fullName} />
                     <div>
                       <p className="font-bold text-slate-900">{t.fullName}</p>
                       <p className="text-sm text-slate-500">

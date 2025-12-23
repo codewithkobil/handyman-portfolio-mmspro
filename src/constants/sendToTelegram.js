@@ -8,9 +8,7 @@ const sendToTelegram = async (data) => {
     `Email: ${data.email}\n` +
     `Phone: ${data.phone}\n\n` +
     `Message:\n${data.description}`;
-  console.log("Sending to Telegram:", text);
-  console.log("Using token:", token);
-  console.log("Using chat ID:", chatId);
+
   const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

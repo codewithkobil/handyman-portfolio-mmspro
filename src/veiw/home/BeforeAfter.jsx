@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -7,14 +7,14 @@ import "swiper/css/pagination";
 
 // Import local images
 
-import beforePainting from "../../assets/transformation/painting-before.jpg";
-import afterPainting from "../../assets/transformation/painting-after.jpg";
+import beforePainting from "../../assets/transformation/painting-before.webp";
+import afterPainting from "../../assets/transformation/painting-after.webp";
 
-import kitchenBefore from "../../assets/transformation/kitchen-before.jpg";
-import kitchenAfter from "../../assets/transformation/kitchen-after.jpg";
+import kitchenBefore from "../../assets/transformation/kitchen-before.webp";
+import kitchenAfter from "../../assets/transformation/kitchen-after.webp";
 
-import living2Before from "../../assets/transformation/living2-before.jpg";
-import living2After from "../../assets/transformation/living2-after.jpg";
+import living2Before from "../../assets/transformation/living2-before.webp";
+import living2After from "../../assets/transformation/living2-after.webp";
 
 // Project data with different images for demonstration
 const projects = [
@@ -102,6 +102,7 @@ const ComparisonSlider = ({ before, after, title, description }) => {
           alt="After renovation"
           className="absolute top-0 left-0 w-full h-full object-cover"
           draggable="false"
+          loading="lazy"
         />
 
         {/* Before Image (Foreground - Clipped) */}
@@ -113,6 +114,7 @@ const ComparisonSlider = ({ before, after, title, description }) => {
             clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)`,
           }}
           draggable="false"
+          loading="lazy"
         />
 
         {/* Slider Line */}

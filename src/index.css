@@ -33,6 +33,12 @@ canvas {
 .swiper-pagination-bullet-active {
   background: #5eaeff;
 }
+.hero-swiper .swiper-slide {
+  opacity: 0;
+}
+.hero-swiper .swiper-slide-active {
+  opacity: 1;
+}
 
 /* Hero swiper pagination */
 .hero-swiper .swiper-pagination {

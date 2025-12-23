@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowUp } from "lucide-react";
-import PhonePng from "../assets/icons/telephone.png";
+import PhonePng from "../assets/icons/sms.webp";
 
 const FloatingPhone = ({ phoneNumber = "954-310-5051" }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [showNumber, setShowNumber] = useState(false);
   const timerRef = useRef(null);
+  const message =
+    "Hi Laziz. I am messaging you from your website. Can you tell me about your work ?";
 
   useEffect(() => {
     const onScroll = () => setIsVisible(window.scrollY > 400);
@@ -41,23 +43,23 @@ const FloatingPhone = ({ phoneNumber = "954-310-5051" }) => {
         }`}
       >
         <a
-          href={`tel:${phoneNumber}`}
+          href={`sms:${phoneNumber}?body=${encodeURIComponent(message)}`}
           onClick={handleCallClick}
           className="group flex items-center gap-3 rounded-full bg-[#00A0F8] px-4 py-3 shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 animate-pulse hover:animate-none"
-          aria-label={`Call us at ${phoneNumber}`}
+          aria-label={`Send us an Message at ${phoneNumber}`}
         >
-          <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/20 transition-colors group-hover:bg-white/30">
+          <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 transition-colors group-hover:bg-white/30">
             <img
               src={PhonePng}
               alt="Phone"
-              className="h-6 w-6 object-contain opacity-95 transition group-hover:opacity-100"
+              className="h-10 w-10 object-contain opacity-95 transition group-hover:opacity-100"
               loading="lazy"
             />
           </span>
 
           <div className={`${showNumber ? "block" : "hidden"} pr-2 lg:block`}>
             <p className="text-xs font-medium text-white/90 uppercase tracking-wide">
-              Call Now
+              Message Now
             </p>
             <p className="text-sm font-bold text-white">{phoneNumber}</p>
           </div>

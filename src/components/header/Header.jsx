@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { projects } from "../../constants/projects";
-import logoIcon from "../../assets/logo.png";
+import logoIcon from "../../assets/logo.webp";
 
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -43,6 +43,7 @@ function Header() {
               <img
                 src={logoIcon}
                 alt="MMS PRO logo"
+                loading="lazy"
                 className="h-full w-full object-contain"
                 draggable="false"
               />
@@ -206,7 +207,7 @@ function Header() {
                   {projects.map((project) => (
                     <Link
                       key={project.id}
-                      to={`/service/${project.id}`}
+                      to={`/service/${project.slug}`}
                       className="block py-1 text-sm text-sky-100 hover:text-white"
                       onClick={closeMobile}
                     >

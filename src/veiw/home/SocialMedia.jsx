@@ -1,28 +1,28 @@
-import Instagram from "../../assets/icons/instagram.png";
-import Facebook from "../../assets/icons/facebook.png";
-import Telegram from "../../assets/icons/telegram.png";
+import Instagram from "../../assets/icons/instagram.webp";
+import Facebook from "../../assets/icons/facebook.webp";
+import Telegram from "../../assets/icons/telegram.webp";
 
 const SOCIAL_POSTS = [
   {
     platform: "Instagram",
     icon: Instagram,
     color: "from-purple-600 to-pink-500",
-    link: "https://instagram.com/pternal_plumbing",
-    handle: "@pternal_plumbing",
+    link: "https://www.instagram.com/mms_pro_llc",
+    handle: "@mms_pro_llc",
   },
   {
     platform: "Facebook",
     icon: Facebook,
     color: "from-blue-700 to-blue-500",
-    link: "https://facebook.com/pternal.plumbing",
-    handle: "pternal.plumbing",
+    link: "https://www.facebook.com/people/MMS-PRO/61558797533929/",
+    handle: "MMS-PRO",
   },
   {
     platform: "Telegram",
     icon: Telegram,
     color: "from-sky-600 to-cyan-500",
-    link: "https://t.me/pternal_plumbing",
-    handle: "@pternal_plumbing",
+    link: "https://t.me/MMS_PRO_LLC",
+    handle: "@MMS_PRO_LLC",
   },
 ];
 
@@ -50,11 +50,11 @@ const SocialMedia = () => {
               {/* Header */}
               <div className={`bg-linear-to-r ${social.color} p-8 text-white`}>
                 <div className="flex flex-col items-center gap-4">
-                  <div className="grid h-16 w-16 place-items-center rounded-2xl bg-white/15 ring-1 ring-white/25">
+                  <div className="grid h-16 w-16 place-items-center rounded-full bg-white/15 ring-1 ring-white/25">
                     <img
                       src={social.icon}
                       alt={`${social.platform} icon`}
-                      className="h-10 w-10 object-contain"
+                      className="h-14 w-14 object-contain"
                       loading="lazy"
                     />
                   </div>

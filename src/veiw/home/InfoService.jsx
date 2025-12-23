@@ -1,6 +1,6 @@
 import EighthImage from "../../assets/works/8.avif";
 import FirstImage from "../../assets/works/1.webp";
-import { CheckCircle2, MapPin, Wrench } from "lucide-react";
+import { CheckCircle2, MapPin } from "lucide-react";
 
 const highlights = [
   "Fast repairs & professional installations",
@@ -13,7 +13,7 @@ const InfoService = () => {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-zinc-50 text-zinc-900"
+      className="relative overflow-hidden bg-white text-slate-50"
     >
       {/* soft background decor */}
       <div className="pointer-events-none absolute inset-0">
@@ -26,7 +26,7 @@ const InfoService = () => {
         <div className="relative col-span-5">
           <div className="absolute -left-6 -top-6 hidden h-24 w-24 grid-cols-6 gap-1 opacity-30 md:grid">
             {Array.from({ length: 36 }).map((_, i) => (
-              <span key={i} className="h-1.5 w-1.5 rounded bg-zinc-300" />
+              <span key={i} className="h-1.5 w-1.5 rounded bg-slate-300" />
             ))}
           </div>
 
@@ -35,7 +35,7 @@ const InfoService = () => {
             <img
               src={EighthImage}
               alt="Handyman with tools"
-              className="relative w-10/12 rounded-2xl border border-zinc-200 bg-white shadow-xl"
+              className="relative w-10/12 rounded-2xl border border-slate-200 bg-white shadow-xl"
               loading="lazy"
             />
           </div>
@@ -44,7 +44,7 @@ const InfoService = () => {
             <img
               src={FirstImage}
               alt="Home repair work"
-              className="rounded-2xl border border-zinc-200 bg-white shadow-2xl"
+              className="rounded-2xl border border-slate-200 bg-white shadow-2xl"
               loading="lazy"
             />
           </div>
@@ -52,11 +52,11 @@ const InfoService = () => {
 
         {/* Right content */}
         <div className="col-span-7">
-          <h2 className="text-4xl font-extrabold tracking-tight text-zinc-900 sm:text-5xl">
+          <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
             About MMS PRO
           </h2>
 
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-zinc-600">
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600">
             MMS PRO is your trusted local handyman team in Charleston, South
             Carolina. We help homeowners, landlords, and small businesses with
             repairs, installs, and home improvements—fast, clean, and
@@ -68,30 +68,30 @@ const InfoService = () => {
             {highlights.map((item) => (
               <div
                 key={item}
-                className="flex items-start gap-3 rounded-xl bg-white p-4 shadow-sm ring-1 ring-zinc-200"
+                className="flex items-start gap-3 rounded-xl bg-white p-4 shadow-sm ring-1 ring-slate-200"
               >
                 <span className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-full bg-sky-50 ring-1 ring-sky-100">
                   <CheckCircle2 className="h-5 w-5 text-sky-700" />
                 </span>
-                <p className="font-semibold text-zinc-800">{item}</p>
+                <p className="font-semibold text-slate-800">{item}</p>
               </div>
             ))}
           </div>
 
           {/* Service area */}
-          <div className="mt-6 max-w-2xl rounded-2xl bg-white p-5 shadow-sm ring-1 ring-zinc-200">
+          <div className="mt-6 max-w-2xl rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
             <div className="flex items-start gap-3">
               <span className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-full bg-amber-50 ring-1 ring-amber-100">
                 <MapPin className="h-5 w-5 text-amber-700" />
               </span>
 
               <div>
-                <p className="text-zinc-800">
+                <p className="text-slate-800">
                   <span className="font-semibold">Service area:</span>{" "}
                   Charleston, Mount Pleasant, North Charleston, Summerville &
                   nearby areas.
                 </p>
-                <p className="mt-1 text-zinc-600">
+                <p className="mt-1 text-slate-600">
                   No job too small—message us and we’ll take care of it.
                 </p>
               </div>

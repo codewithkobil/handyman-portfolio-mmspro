@@ -2,7 +2,6 @@ import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import Hero from "../../components/Hero";
 import FloatingPhone from "../../components/FloatingPhone";
-// import Availability from "./Availability";
 import BeforeAfter from "./BeforeAfter";
 import SocialMedia from "./SocialMedia";
 import Projects from "./Projects";
@@ -20,7 +19,6 @@ const Home = () => {
       <Projects />
       <Service />
       <Testimonials />
-
       <SocialMedia />
       <Footer />
       <FloatingPhone />

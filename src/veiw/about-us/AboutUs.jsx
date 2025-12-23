@@ -1,16 +1,26 @@
 import { User, ArrowUpRight } from "lucide-react";
 
-import profileImg from "../../assets/profile.png";
+import profileImg from "../../assets/profile.webp";
 
 // ✅ your PNG icons
-import WebLinkPng from "../../assets/icons/web-link.png";
-import MapPng from "../../assets/icons/map.png";
-import InstagramPng from "../../assets/icons/instagram.png";
-import FacebookPng from "../../assets/icons/facebook.png";
-import TelegramPng from "../../assets/icons/telegram.png";
+import WebLinkPng from "../../assets/icons/web-link.webp";
+import MapPng from "../../assets/icons/map.webp";
+import InstagramPng from "../../assets/icons/instagram.webp";
+import FacebookPng from "../../assets/icons/facebook.webp";
+import TelegramPng from "../../assets/icons/telegram.webp";
+import PhonePng from "../../assets/icons/sms.webp";
 import FloatingPhone from "../../components/FloatingPhone";
 
+const message =
+  "Hi Laziz. I am messaging you from your website. Can you tell me about your work ?";
+const phoneNumber = "954-310-5051";
 const links = [
+  {
+    label: "Message",
+    href: `sms:${phoneNumber}?body=${encodeURIComponent(message)}`,
+    handle: phoneNumber,
+    iconSrc: PhonePng,
+  },
   {
     label: "Website",
     href: "https://mmspro.work",
@@ -25,21 +35,28 @@ const links = [
   },
   {
     label: "Facebook",
-    href: "https://facebook.com",
-    handle: "@mmspro",
+    href: "https://www.facebook.com/people/MMS-PRO/61558797533929/",
+    handle: "MMS-PRO",
     iconSrc: FacebookPng,
   },
   {
     label: "Instagram",
-    href: "https://instagram.com/mms_pro_llc",
+    href: "https://www.instagram.com/mms_pro_llc",
     handle: "@mms_pro_llc",
     iconSrc: InstagramPng,
   },
   {
     label: "Telegram",
-    href: "https://t.me/mmspro",
-    handle: "@mmspro",
+    href: "https://t.me/MMS_PRO_LLC",
+    handle: "@MMS_PRO_LLC",
     iconSrc: TelegramPng,
+  },
+  {
+    label: "Thumbtack",
+    href: "https://www.thumbtack.com/sc/charleston/handyman/mms-pro-handyman/service/508092614005686275",
+    handle: "MMS Pro Handyman",
+    iconSrc:
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAATlBMVEVHcEw8rN4ZotoVotoSodoAn9kjpNtQs+EQoNoRoNorqN0Amtic0eys1+8AmNft9/z////r9vu93/LG4/QZotoNodpft+JbteFvveRqu+P1rF0xAAAAFnRSTlMAKHy45P9UD9bTM////////////9/xlGzyNwAAALdJREFUeAGFkwUSwzAMBM8gO8z4/4cWVDC0mmw4mxjP+KK0sUTWaIUcZ+mLdYnyBSWUPriKfqhkF6ynv3iWXF+dwPVyO9k1bUTD1gHgPnT9EDF23CNAkSRJQZNULGkYYmqm64ivxBhYCtTTMHf0ZUHqErnGsptzaWW5wMjSQMtSQ8lSATaRUx0C8Rl4pm6HoQ3SfaeM2YZhD1HJJrvrx1Clz2NynJchCo7xpRxNKdTJcljWdYmXwx0elRLlCj7YFwAAAABJRU5ErkJggg==",
   },
 ];
 
@@ -94,11 +111,11 @@ const AboutUs = () => {
                 className="group flex items-center justify-between rounded-2xl bg-white/5 px-4 py-4 ring-1 ring-white/10 backdrop-blur-md transition hover:bg-white/8 hover:ring-white/20"
               >
                 <div className="flex items-center gap-3">
-                  <div className="grid h-11 w-11 place-items-center rounded-xl bg-white/10 ring-1 ring-white/10">
+                  <div className="grid h-11 w-11 place-items-center rounded-full bg-white/10 ring-1 ring-white/10">
                     <img
                       src={item.iconSrc}
                       alt={`${item.label} icon`}
-                      className="h-6 w-6 object-contain opacity-90 transition group-hover:opacity-100"
+                      className="h-8 w-8 object-contain opacity-90 transition group-hover:opacity-100"
                       loading="lazy"
                     />
                   </div>

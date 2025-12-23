@@ -1,5 +1,5 @@
 import FirstImage from "../assets/works/1.webp";
-import SecondImage from "../assets/works/2.jpg";
+import SecondImage from "../assets/works/2.webp";
 import ThirdImage from "../assets/works/3.avif";
 import FourthImage from "../assets/works/4.avif";
 import FifthImage from "../assets/works/5.avif";
@@ -8,7 +8,7 @@ import SeventhImage from "../assets/works/7.avif";
 import EighthImage from "../assets/works/8.avif";
 import NinthImage from "../assets/works/9.avif";
 import TenthImage from "../assets/works/10.avif";
-import EleventhImage from "../assets/works/11.jpg";
+import EleventhImage from "../assets/works/11.webp";
 import TwelfthImage from "../assets/works/12.webp";
 
 export const projects = [

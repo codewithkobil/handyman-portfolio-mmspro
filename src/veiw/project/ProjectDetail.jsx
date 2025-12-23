@@ -1,8 +1,8 @@
+import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import { projects } from "../../constants/projects";
-import { useEffect } from "react";
 import FloatingPhone from "../../components/FloatingPhone";
 
 const ProjectDetail = () => {
@@ -61,6 +61,7 @@ const ProjectDetail = () => {
                   src={project.coverImage}
                   alt={project.title}
                   className="w-full h-auto object-cover"
+                  loading="lazy"
                 />
               </div>
             </div>

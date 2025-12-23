@@ -3,17 +3,19 @@ import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import { Sparkles } from "lucide-react";
 
-import MapPng from "../../assets/icons/map.png";
-import EmailPng from "../../assets/icons/communication.png";
-import PhonePng from "../../assets/icons/telephone.png";
+import MapPng from "../../assets/icons/map.webp";
+import EmailPng from "../../assets/icons/communication.webp";
+import PhonePng from "../../assets/icons/sms.webp";
 import sendToTelegram from "../../constants/sendToTelegram";
 import MapNearby from "../../components/footer/MapNearby";
-
+const message =
+  "Hi Laziz. I am messaging you from your website. Can you tell me about your work ?";
+const phoneNumber = "954-310-5051";
 const CONTACT_ITEMS = [
   {
-    label: "Phone",
-    value: "954-310-5051",
-    href: "tel:954-310-5051",
+    label: "Message",
+    value: phoneNumber,
+    href: `sms:${phoneNumber}?body=${encodeURIComponent(message)}`,
     icon: PhonePng,
   },
   {
@@ -111,11 +113,11 @@ const Contact = () => {
                     }
                     className="group flex items-start gap-3 rounded-xl p-2 transition hover:bg-white/5"
                   >
-                    <span className="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/10">
+                    <span className="mt-0.5 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/10">
                       <img
                         src={item.icon}
                         alt={`${item.label} icon`}
-                        className="h-5 w-5 object-contain opacity-90 transition group-hover:opacity-100"
+                        className="h-8 w-8 object-contain opacity-90 transition group-hover:opacity-100"
                         loading="lazy"
                       />
                     </span>
